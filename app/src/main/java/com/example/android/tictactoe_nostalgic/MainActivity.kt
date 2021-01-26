@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
@@ -18,6 +17,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         reset.setOnClickListener{
             turn = 1
             game   = arrayOf(25,24,23,22,21,20,19,18,17)
+            finish()
             val intent = Intent(this,MainActivity::class.java)
             startActivity(intent)
         }
@@ -39,9 +39,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         if(turn%2==0){
             v?.setBackgroundResource(R.drawable.x)
             textView1.text="Play Player I"
+
             chance(v?.id)
             turn++
-//            2131296432--40
         }else{
             v?.setBackgroundResource(R.drawable.o)
             textView1.text="Play Player II"
@@ -64,55 +64,79 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         if(game[0] == game [1] && game[1]==game[3]){
             if(turn%2==0){
                 textView1.text="Player II Wins"
+                disable()
             }else{
                 textView1.text="Player I Wins"
+                disable()
             }
         }else if(game[3] == game [4] && game[4]==game[5]){
             if(turn%2==0){
                 textView1.text="Player II Wins"
+                disable()
             }else{
                 textView1.text="Player I Wins"
+                disable()
             }
         }else if(game[6] == game [7] && game[7]==game[8]){
             if(turn%2==0){
                 textView1.text="Player II Wins"
+                disable()
             }else{
                 textView1.text="Player I Wins"
+                disable()
             }
         }else if(game[0] == game [3] && game[3]==game[6]){
             if(turn%2==0){
                 textView1.text="Player II Wins"
+                disable()
             }else{
                 textView1.text="Player I Wins"
+                disable()
             }
         }else if(game[1] == game [4] && game[4]==game[7]){
             if(turn%2==0){
                 textView1.text="Player II Wins"
+                disable()
             }else{
                 textView1.text="Player I Wins"
+                disable()
             }
         }else if(game[2] == game [5] && game[5]==game[8]){
             if(turn%2==0){
                 textView1.text="Player II Wins"
+                disable()
             }else{
                 textView1.text="Player I Wins"
+                disable()
             }
         }else if(game[0] == game [4] && game[4]==game[8]){
             if(turn%2==0){
                 textView1.text="Player II Wins"
+                disable()
             }else{
                 textView1.text="Player I Wins"
+                disable()
             }
         }else if(game[2] == game [4] && game[4]==game[6]){
             if(turn%2==0){
                 textView1.text="Player II Wins"
+                disable()
             }else{
                 textView1.text="Player I Wins"
+                disable()
             }
         }
     }
-}
 
-//012
-//345
-//678
+    private fun disable() {
+        imageView1.isClickable = false
+        imageView2.isClickable = false
+        imageView3.isClickable = false
+        imageView4.isClickable = false
+        imageView5.isClickable = false
+        imageView6.isClickable = false
+        imageView7.isClickable = false
+        imageView8.isClickable = false
+        imageView9.isClickable = false
+    }
+}
