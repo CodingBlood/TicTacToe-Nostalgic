@@ -10,6 +10,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+//        var game   = arrayOf(0,0,0,0,0,0,0,0,0)
+//        var turn : Int =1
+
+
+
         imageView1.setOnClickListener(this)
         imageView2.setOnClickListener(this)
         imageView3.setOnClickListener(this)
@@ -26,9 +31,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         if(turn%2==0){
             v?.setBackgroundResource(R.drawable.x)
+            textView1.text="Play Player I"
             turn++
         }else{
             v?.setBackgroundResource(R.drawable.o)
+            textView1.text="Play Player II"
             turn++
         }
     }
