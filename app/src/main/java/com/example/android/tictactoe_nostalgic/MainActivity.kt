@@ -12,11 +12,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-//        var PLayerTurn : Int = 1
 
         reset.setOnClickListener{
-            turn = 1
-            game   = arrayOf(25,24,23,22,21,20,19,18,17)
             finish()
             val intent = Intent(this,MainActivity::class.java)
             startActivity(intent)
@@ -62,69 +59,31 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun check() {
         if(game[0] == game [1] && game[1]==game[3]){
-            if(turn%2==0){
-                textView1.text="Player II Wins"
-                disable()
-            }else{
-                textView1.text="Player I Wins"
-                disable()
-            }
+            displayIt()
         }else if(game[3] == game [4] && game[4]==game[5]){
-            if(turn%2==0){
-                textView1.text="Player II Wins"
-                disable()
-            }else{
-                textView1.text="Player I Wins"
-                disable()
-            }
+            displayIt()
         }else if(game[6] == game [7] && game[7]==game[8]){
-            if(turn%2==0){
-                textView1.text="Player II Wins"
-                disable()
-            }else{
-                textView1.text="Player I Wins"
-                disable()
-            }
+            displayIt()
         }else if(game[0] == game [3] && game[3]==game[6]){
-            if(turn%2==0){
-                textView1.text="Player II Wins"
-                disable()
-            }else{
-                textView1.text="Player I Wins"
-                disable()
-            }
+            displayIt()
         }else if(game[1] == game [4] && game[4]==game[7]){
-            if(turn%2==0){
-                textView1.text="Player II Wins"
-                disable()
-            }else{
-                textView1.text="Player I Wins"
-                disable()
-            }
+            displayIt()
         }else if(game[2] == game [5] && game[5]==game[8]){
-            if(turn%2==0){
-                textView1.text="Player II Wins"
-                disable()
-            }else{
-                textView1.text="Player I Wins"
-                disable()
-            }
+            displayIt()
         }else if(game[0] == game [4] && game[4]==game[8]){
-            if(turn%2==0){
-                textView1.text="Player II Wins"
-                disable()
-            }else{
-                textView1.text="Player I Wins"
-                disable()
-            }
+            displayIt()
         }else if(game[2] == game [4] && game[4]==game[6]){
-            if(turn%2==0){
-                textView1.text="Player II Wins"
-                disable()
-            }else{
-                textView1.text="Player I Wins"
-                disable()
-            }
+            displayIt()
+        }
+    }
+
+    private fun displayIt() {
+        if(turn%2==0){
+            textView1.text="Player II Wins"
+            disable()
+        }else{
+            textView1.text="Player I Wins"
+            disable()
         }
     }
 
