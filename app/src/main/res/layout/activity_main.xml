@@ -13,8 +13,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_weight="1"
-            android:layout_marginBottom="25dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
             android:orientation="vertical"
             android:layout_height="wrap_content">
 
@@ -111,7 +110,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginBottom="2dp"
             android:layout_weight="1"
             android:orientation="horizontal">
 
@@ -149,19 +147,27 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_weight="1"
-            android:layout_marginBottom="25dp"
+            android:orientation="vertical"
             android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/textView1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_height="0dp"
                 android:fontFamily="@font/architects_daughter"
                 android:gravity="center"
                 android:text="Play Player I"
                 android:textAllCaps="true"
                 android:textColor="@color/black"
                 android:textSize="45sp" />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/reset"
+                android:text="Reset"
+                android:fontFamily="@font/architects_daughter"
+                android:layout_height="0dp"/>
         </LinearLayout>
 
 </LinearLayout>
