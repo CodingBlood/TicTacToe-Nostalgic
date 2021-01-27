@@ -1,20 +1,36 @@
 package com.example.android.tictactoe_nostalgic
-
+import android.bluetooth.BluetoothAdapter
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
+    lateinit var myBluetoothAdapter : BluetoothAdapter
+    lateinit var btEnablingIntent : Intent
+    var RequestCodeForEnable : Int = 0
     var turn : Int=1
     var game   = arrayOf(25,24,23,22,21,20,19,18,17)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
+        myBluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
+        btEnablingIntent=Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE)
+        RequestCodeForEnable=1
+        bluetoothONMethod()
+
+
         reset.setOnClickListener{
             finish()
+
+            myBluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
+            btEnablingIntent=Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE)
+            RequestCodeForEnable=1
+            bluetoothONMethod()
             val intent = Intent(this,MainActivity::class.java)
             startActivity(intent)
         }
@@ -29,6 +45,27 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         imageView8.setOnClickListener(this)
         imageView9.setOnClickListener(this)
 
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode==RequestCodeForEnable){
+            if(resultCode== RESULT_OK){
+                Toast.makeText(applicationContext,"Bluetooth Is Enabled",Toast.LENGTH_SHORT).show()
+            }else if (resultCode== RESULT_CANCELED){
+                Toast.makeText(applicationContext,"Bluetooth  Enabling Canceled",Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun bluetoothONMethod() {
+        if(myBluetoothAdapter==null){
+            Toast.makeText(applicationContext,"Bluetooth does not support this device",Toast.LENGTH_SHORT).show()
+        }else{
+            if(!myBluetoothAdapter.isEnabled){
+                startActivityForResult(btEnablingIntent,RequestCodeForEnable)
+            }
+        }
     }
 
 
@@ -58,7 +95,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun check() {
-        if(game[0] == game [1] && game[1]==game[3]){
+        if(game[0] == game [1] && game[1]==game[2]){
             displayIt()
         }else if(game[3] == game [4] && game[4]==game[5]){
             displayIt()
@@ -98,4 +135,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         imageView8.isClickable = false
         imageView9.isClickable = false
     }
+
+
 }
