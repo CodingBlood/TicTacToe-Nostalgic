@@ -25,6 +25,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
 
         reset.setOnClickListener{
+            turn =1
+            game   = arrayOf(25,24,23,22,21,20,19,18,17)
             finish()
 
             myBluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
@@ -75,17 +77,19 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             textView1.text="Play Player I"
 
             chance(v?.id)
+            v?.isClickable=false
             turn++
         }else{
             v?.setBackgroundResource(R.drawable.o)
             textView1.text="Play Player II"
             chance(v?.id)
+            v?.isClickable=false
             turn++
         }
     }
 
     private fun chance(id: Int?) {
-        var btnno : Int? = (id?.rem(100))?.minus(32)
+        var btnno : Int? = (id?.rem(100))?.minus(34)
         if(turn%2 == 0){
             game[btnno!!]=1
         }else{

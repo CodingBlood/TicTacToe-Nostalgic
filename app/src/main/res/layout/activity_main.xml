@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@drawable/wp3706084"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:orientation="vertical">
@@ -24,8 +25,8 @@
                 android:fontFamily="@font/architects_daughter"
                 android:gravity="center"
                 android:text="Tic-Tac-Toe"
+                android:textStyle="bold"
                 android:textAllCaps="true"
-                android:textColor="@color/black"
                 android:textSize="45sp" />
         </LinearLayout>
 
@@ -157,9 +158,9 @@
                 android:layout_height="0dp"
                 android:fontFamily="@font/architects_daughter"
                 android:gravity="center"
+                android:textStyle="bold"
                 android:text="Play Player I"
                 android:textAllCaps="true"
-                android:textColor="@color/black"
                 android:textSize="45sp" />
             <Button
                 android:layout_width="match_parent"
